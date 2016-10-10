@@ -38,12 +38,17 @@ def index(request):
                         #return render(request, 'signup/loginsuccess.html',{'name': user.name})
                         return HttpResponseRedirect(reverse('signup:loginsuccess'))
                     else:
+                        '''
                         error="wrong password"
                         return render(request, 'signup/index.html', {'formsignup': signupform,'formlogin':loginform,'error':error})
+                        '''
+                        return HttpResponse("<script> alert('PASSWORD INCORRECT..!!'); window.location=\"\"; </script>")
                 else:
+                    '''
                     error="Invalid username or email"
                     return render(request, 'signup/index.html', {'formsignup': signupform,'formlogin':loginform,'error':error})
-
+                    '''
+                    return HttpResponse("<script> alert('invalid username or email..!!'); window.location=\"\"; </script>")
 
 
     # if a GET (or any other method) we'll create a blank form

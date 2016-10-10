@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 
 x=User()
 
-n=""
+
 def index(request):
     # if this is a POST request we need to process the form data
     # print(x.email)
@@ -43,8 +43,9 @@ def index(request):
                 listname.append(user.name)
             if (loginform.cleaned_data['nameoremail'] in listusername) or (user.email==loginform.cleaned_data['nameoremail'] in listemail):
                 if loginform.cleaned_data['passlogin']in listpass:
-                    global n
+
                     n=listname[listpass.index(loginform.cleaned_data['passlogin'])]
+                    request.session['name']=n
                     #return render(request, 'signup/loginsuccess.html',{'name': user.name})
                     return HttpResponseRedirect(reverse('signup:loginsuccess'))
                 else:
@@ -74,5 +75,5 @@ def success(request):
 
 
 def loginsuccess(request):
-    global n
-    return render(request,'signup/loginsuccess.html',{"name":n})
+    print("this is session variable"+request.session['name'])
+    return render(request,'signup/loginsuccess.html',{"name":request.session['name']})

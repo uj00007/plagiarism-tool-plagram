@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+.my {
+ background-color: yellow;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+</style>
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>PLAGRAM.!!</title>
+      <meta name="viewport" width="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+     <link rel="stylesheet" type="text/css" href="{% static 'signup/index.css' %}">
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" href="{% static 'signup/style.css' %}" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'signup/jquery-1.11.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'signup/jquery.leanModal.min.js' %}"></script>
+
+
+</head>
+<body>
+    <div id="inner-layout">
+           <div id="main" onmouseover="change_l0()" onmousewheel="change_l0()">
+
+                      <div class="opaque">
+                         <div id="main-menu">
+                          <ul>
+                             <li id="l0"><a href="#main">HOME</a></li>
+                          </ul>
+                         <img src="{% static 'signup/images/logor.png' %}" style=" margin-top: -10px;    width: 220px;
+    height: 121px;
+">
+                         <ul style="float:right">
+                            <li id="l1"><a  href="#section">PLAGIARISM</a></li>
+                            <li id="l2"><a href="#about">ABOUT</a></li>
+                            <li id="l3"><a href="#footer">CONTACT</a></li>
+                            <li id="login"><a  id="log" href="#modal">LOGIN | SIGNUP</a></li>
+                         </ul>
+                          </div>
+                      </div>
+
+
+               <p>"Plagiarism is the fear of a blank page"</p>
+              <p class="info">Plagram helps you detect plagiarism in any document or code.It checks through millions of documents and
+               help you out in finding percentage of plgiarism in your document.</p>
+
+              <div class="ph-container">
+    <div class="ph-float">
+        <a href='#' class='ph-button'>CLICK HERE</a>
+    </div>
+              </div>
+
+<div class="ph-clear"></div>
+           </div>
+
+
+
+
+
+
+
+           <div  class="section" id="section" onmouseover="change_l1()" onmousewheel="change_l1()">
+                  <div class="skew1">
+                 </div>
+           </div>
+
+
+
+
+           <div class="about" id="about"  onmouseover="change_l2()" onmousewheel="change_l2()">
+               <div class="skew2">
+               </div>
+           </div>
+
+
+
+
+           <div class="contact" id="contact" onmouseover="change_l3()" onmousewheel="change_l3()">
+               <div class="skew3">
+               </div>
+           </div>
+
+           <div class="footer" id="footer">
+              <hr style="margin-left:10% ;margin-right: 10%">
+               <i id="fblogo" class="fa fa-facebook-f"></i>
+               <i id="twitterlogo" class="fa fa-twitter"></i>
+               <i id="gitlogo" class="fa fa-github"></i>
+               <i id="linklogo" class="fa fa-linkedin"></i>
+           </div>
+        <div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+			<span class="header_title">Login</span>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+
+		<section class="popupBody">
+			<!-- Social Login -->
+			<div class="social_login">
+				<div class="">
+					<a href="#" class="social_box fb">
+						<span class="icon"><i class="fa fa-facebook"></i></span>
+						<span class="icon_title">Connect with Facebook</span>
+
+					</a>
+
+					<a href="#" class="social_box google">
+						<span class="icon"><i class="fa fa-google-plus"></i></span>
+						<span class="icon_title">Connect with Google</span>
+					</a>
+				</div>
+
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+					<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+				</div>
+			</div>
+
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+                {% if error_message %}
+    <p><strong>error_message</strong></p>
+{% endif %}
+				<form action="{% url 'signup:index'%}" method="post">
+					{% csrf_token %}
+    {{ formlogin }}
+    <br>
+    <br>
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><input type="submit" value="Submit" /></div>
+					</div>
+				</form>
+
+				<a href="#" class="forgot_password">Forgot password?</a>
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				{% if error_message %}
+    <p><strong>error_message</strong></p>
+{% endif %}
+<form action="{% url 'signup:index'%}" method="post">
+    {% csrf_token %}
+    {{ formsignup }}
+    <br>
+    <br>
+    <div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><input type="submit" value="Submit" /></div>
+					</div>
+
+
+</form>
+
+			</div>
+		</section>
+	</div>
+
+ <script type="text/javascript" src="{% static 'signup/index.js' %}" ></script>
+
+  </div>
+<script type="text/javascript">
+	$("#log").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+
+	$(function(){
+		// Calling Login Form
+		$("#login_form").click(function(){
+			$(".social_login").hide();
+			$(".user_login").show();
+			return false;
+		});
+
+		// Calling Register Form
+		$("#register_form").click(function(){
+			$(".social_login").hide();
+			$(".user_register").show();
+			$(".header_title").text('Register');
+			return false;
+		});
+
+		// Going back to Social Forms
+		$(".back_btn").click(function(){
+			$(".user_login").hide();
+			$(".user_register").hide();
+			$(".social_login").show();
+			$(".header_title").text('Login');
+			return false;
+		});
+
+	})
+</script>
+</body>
+</html>

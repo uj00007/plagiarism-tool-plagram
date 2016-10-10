@@ -1,0 +1,402 @@
+   *{
+
+  box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin:0px;
+    padding:0px;
+    z-index:20;
+
+}
+
+#inner-layout{
+    width:100%;
+    height: 100%;
+    margin:0px;
+    padding:0px;
+    z-index:30;
+    background-color: black;
+
+}
+
+
+#main{
+    background: url(images/check-theses.jpg) fixed center no-repeat;
+    height:109%;
+    background-size: cover;
+      -webkit-transition: all 0.2s ease;
+
+}
+
+.opaque{
+    width:100%;
+    background-color:rgba(0,0,0,0.6);
+    height:100%;
+    z-index:5;
+    text-align: center;
+}
+
+
+
+#main-menu{
+     background-color: #3F8ABF;
+     box-shadow: 1px 2px 9px 2px #424242;
+    position:fixed;
+    height:80px;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    z-index:10;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+
+}
+
+
+ul {
+
+    list-style-type: none;
+    margin: 0px;
+    padding:0px;
+}
+li {
+    font-family:"Trebuchet MS",Helvetica,sans-serif;
+    text-decoration-line: none;
+    display: inline;
+    float: left;
+    height: 80px;
+    font-size: 25px;
+    padding: 29px 15px;
+    color: white;
+    cursor:pointer;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+}
+ /* li:hover{
+      -webkit-transform: scale(1.1);
+
+
+}
+   */
+
+.logo{
+    width:500px;
+    height:500px;
+
+    z-index: 80;
+    display: inline;
+    position: fixed;
+}
+
+#login{
+    font-size:15px;
+    padding:37px 25px ;
+    -webkit-transform: scale(1);
+}
+
+a {
+    display: block;
+    color:white;
+    text-decoration: none;
+}
+#log:hover{
+    color:#CFD8DC;
+}
+
+
+p{
+    margin-top:-400px;
+    margin-left:12%;
+     display: inline;
+    position:absolute;
+    font-size: 60px;
+    /*height:50px;
+    width: 800px;*/
+    z-index: 1;
+    color:#E0F7FA;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+
+}
+
+.info {
+
+    margin-top: -270px;
+    margin-left:25%;
+     margin-right:25%;
+    text-align: center;
+
+    display: inline;
+    position: absolute;
+    font-size:22px;
+    /*height:50px;
+    width: 800px;*/
+    z-index: 1;
+    color:#E0F7FA;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+
+.ph-button {
+    margin-top:-200px;
+    margin-left: 30%;
+position: absolute;
+    border-style:solid;
+
+    border-width: 0px 0px 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;
+    font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    padding: 19px 39px 18px;
+    font-size:22px;
+    border-color: #326E99;
+    background-color: #3F8ABF;
+
+}
+
+
+
+.ph-button:hover, .ph-button:focus, .ph-button:active {
+    background-color: #397CAC;
+    border-color: #326E99;
+}
+
+
+.ph-container {
+
+  margin: 0 auto;
+  display: inline;
+
+}
+
+.ph-float {
+
+  float: left;
+  width: 22%;
+  padding: 10px;
+  padding-top: 50px;
+  text-align: center;
+
+}
+
+.ph-clear {
+
+  clear: both;
+
+}
+
+
+
+
+
+
+
+
+
+
+#section{
+  /*  background-image: url(images/7.png); */
+    width: 100%;
+    min-height:700px;
+    z-index: 1;
+  position:relative;
+}
+
+
+
+
+.section .skew1:before {
+  content: '';
+  position:absolute;
+  left: 0;
+  top:-50px;
+  overflow: visible;
+  width: 100%;
+  height: 1050px;
+  background:#3F8ABF;
+  z-index: -1;
+  -webkit-transform: skewY(-4deg);
+  -moz-transform: skewY(-4deg);
+  -ms-transform: skewY(-4deg);
+  -o-transform: skewY(-4deg);
+  transform: skewY(-4deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: initial;
+}
+
+.section .skew1 {
+  margin-left: auto;
+  margin-right: auto;
+    -webkit-transform: translateZ( 0 );
+    transform: translateZ( 0 );
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.about {
+  z-index: 1;
+  position:relative;
+
+}
+
+
+.about .skew2:before {
+  content: '';
+  position:absolute;
+  left: 0;
+  top:-50px;
+  overflow: visible;
+  width: 100%;
+  height: 850px;
+  background: #aca3d4;
+  z-index: -1;
+  -webkit-transform: skewY(4deg);
+  -moz-transform: skewY(4deg);
+  -ms-transform: skewY(4deg);
+  -o-transform: skewY(4deg);
+  transform: skewY(4deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: initial;
+}
+
+.about .skew2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+.contact {
+  z-index:1;
+  position:relative;
+    background-image: url(images/check-theses.jpg);
+
+}
+
+.contact .skew3:before {
+  content: '';
+  position:absolute;
+  left: 0;
+  top:700px;
+  overflow: visible;
+  width: 100%;
+  height: 650px;
+  background-color:dodgerblue;
+  z-index: -1;
+  -webkit-transform: skewY(-4deg);
+  -moz-transform: skewY(-4deg);
+  -ms-transform: skewY(-4deg);
+  -o-transform: skewY(-4deg);
+  transform: skewY(-4deg);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: initial;
+    opacity:1;
+}
+
+.contact .skew3 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+.footer{
+    position: relative;
+    width:100%;
+    background-color:dodgerblue;
+    height:120px;
+    top:1280px;
+    z-index: 100;
+
+}
+
+
+#fblogo{
+    color:white;
+    margin-top: 3%;
+    margin-left: 40%;
+    font-size:44px;
+
+}
+#fblogo:hover{
+    color:blue;
+}
+
+#twitterlogo{
+    color:white;
+    margin-top: 1%;
+    margin-left: 2%;
+    font-size:46px;
+
+}
+#twitterlogo:hover{
+    color:dodgerblue;
+}
+
+#gitlogo{
+    color:white;
+    margin-top: 1%;
+    margin-left: 2%;
+    font-size:46px;
+
+}
+#gitlogo:hover{
+    color:rebeccapurple;
+}
+#linklogo{
+    color:white;
+    margin-top: 1%;
+    margin-left: 2%;
+    font-size:46px;
+
+}
+#linklogo:hover{
+    color:#1976D2;
+}
+
+
+
+
+

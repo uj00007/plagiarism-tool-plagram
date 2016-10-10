@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 
 x=User()
 
-
+n=""
 def index(request):
     # if this is a POST request we need to process the form data
     # print(x.email)
@@ -32,23 +32,33 @@ def index(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
+            listusername=[]
+            listemail=[]
+            listpass=[]
+            listname=[]
             for user in User.objects:
-                if user.username==loginform.cleaned_data['nameoremail'] or user.email==loginform.cleaned_data['nameoremail']:
-                    if user.password==loginform.cleaned_data['passlogin']:
-                        #return render(request, 'signup/loginsuccess.html',{'name': user.name})
-                        return HttpResponseRedirect(reverse('signup:loginsuccess'))
-                    else:
-                        '''
-                        error="wrong password"
-                        return render(request, 'signup/index.html', {'formsignup': signupform,'formlogin':loginform,'error':error})
-                        '''
-                        return HttpResponse("<script> alert('PASSWORD INCORRECT..!!'); window.location=\"\"; </script>")
+                listusername.append(user.username)
+                listemail.append(user.email)
+                listpass.append(user.password)
+                listname.append(user.name)
+            if (loginform.cleaned_data['nameoremail'] in listusername) or (user.email==loginform.cleaned_data['nameoremail'] in listemail):
+                if loginform.cleaned_data['passlogin']in listpass:
+                    global n
+                    n=listname[listpass.index(loginform.cleaned_data['passlogin'])]
+                    #return render(request, 'signup/loginsuccess.html',{'name': user.name})
+                    return HttpResponseRedirect(reverse('signup:loginsuccess'))
                 else:
                     '''
-                    error="Invalid username or email"
+                    error="wrong password"
                     return render(request, 'signup/index.html', {'formsignup': signupform,'formlogin':loginform,'error':error})
                     '''
-                    return HttpResponse("<script> alert('invalid username or email..!!'); window.location=\"\"; </script>")
+                    return HttpResponse("<script> alert('PASSWORD INCORRECT..!!'); window.location=\"\"; </script>")
+            else:
+                '''
+                error="Invalid username or email"
+                return render(request, 'signup/index.html', {'formsignup': signupform,'formlogin':loginform,'error':error})
+                '''
+                return HttpResponse("<script> alert('invalid username or email..!!'); window.location=\"\"; </script>")
 
 
     # if a GET (or any other method) we'll create a blank form
@@ -64,4 +74,5 @@ def success(request):
 
 
 def loginsuccess(request):
-    return render(request,'signup/loginsuccess.html',{})
+    global n
+    return render(request,'signup/loginsuccess.html',{"name":n})

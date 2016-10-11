@@ -23,13 +23,27 @@ def index(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
+            listusername = []
+            listemail=[]
+            for i in User.objects:
+                listusername.append(i.username)
+                listemail.append(i.email)
+            if signupform.cleaned_data['your_username'] not in listusername:
+                if signupform.cleaned_data['your_email'] not in listemail:
+                    hash = sha256_crypt.encrypt(signupform.cleaned_data['your_password'])
+                    user = User(name=signupform.cleaned_data['your_name'],
+                                username=signupform.cleaned_data['your_username'],
+                                email=signupform.cleaned_data['your_email'], password=hash)
+                    user.save()
+                    # return render(request, 'signup/success.html',{'name':signupform.cleaned_data['your_name']})
+                    return HttpResponseRedirect(reverse('signup:success'))
+                else:
+                    return HttpResponse(
+                        '<script> alert(\'EMAIL ALREADY REGISTERED..!!\'); window.location=""; </script>')
+            else:
+                return HttpResponse("<script> alert('USERNAME TAKEN ALREADY..please select a new one!!'); window.location=\"\"; </script>")
 
-            hash = sha256_crypt.encrypt(signupform.cleaned_data['your_password'])
-            user = User(name=signupform.cleaned_data['your_name'], username=signupform.cleaned_data['your_username'],
-                        email=signupform.cleaned_data['your_email'],password=hash)
-            user.save()
-            #return render(request, 'signup/success.html',{'name':signupform.cleaned_data['your_name']})
-            return HttpResponseRedirect(reverse('signup:success'))
+
         if loginform.is_valid():
             # process the data in form.cleaned_data as required
             # ...
